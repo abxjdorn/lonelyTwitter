@@ -12,6 +12,7 @@ public abstract class Tweet implements Tweetable {
     public Tweet(String message) {
         this.message = message;
         this.date = new Date();
+        this.moods = new ArrayList<Mood>();
     }
     
     public Tweet(String message, Date date) {

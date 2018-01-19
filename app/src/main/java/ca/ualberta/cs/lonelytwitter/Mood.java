@@ -1,6 +1,5 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import java.time.Instant;
 import java.util.Date;
 
 public abstract class Mood {
