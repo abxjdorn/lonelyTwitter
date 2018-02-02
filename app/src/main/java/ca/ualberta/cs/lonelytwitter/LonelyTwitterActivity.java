@@ -28,13 +28,28 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Primary activity class for the app.
+ * Displays the list of currently extant Tweets and provides
+ * interface for adding and removing them.
+ *
+ * @author dezfuli
+ * @version 1.0
+ */
 public class LonelyTwitterActivity extends Activity {
-
+	/** File to use for saving and restoring tweets. */
 	private static final String FILENAME = "file.sav";
+	
+	/** View for typing in new tweets. */
 	private EditText bodyText;
+	
+	/** View that lists the extant tweets. */
 	private ListView oldTweetsList;
 	
+	/** List of currently extant tweets. */
 	private ArrayList<Tweet> tweetList;
+	
+	/** Adapter for the list of currently extant tweets. */
 	private ArrayAdapter<Tweet> adapter;
 	
 	/** Called when the activity is first created. */
@@ -78,6 +93,9 @@ public class LonelyTwitterActivity extends Activity {
 		});
 	}
 
+	/**
+	 * Called when the activity is initialized.
+	 */
 	@Override
 	protected void onStart() {
 
@@ -90,7 +108,11 @@ public class LonelyTwitterActivity extends Activity {
 		
 		oldTweetsList.setAdapter(adapter);
 	}
-
+	
+	/**
+	 * Loads tweets from save file into the list and updates the on screen display
+	 * of tweets.
+	 */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -110,6 +132,9 @@ public class LonelyTwitterActivity extends Activity {
 		}
 	}
 	
+	/**
+	 * Saves tweets to save file (from array of currently extant tweets).
+	 */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
@@ -126,7 +151,10 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException();
 		}
 	}
-
+	
+	/**
+	 * Called when the activity is destroyed
+	 */
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
