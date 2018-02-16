@@ -73,7 +73,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         correctList.add(tweet3);
         correctList.add(tweet2);
         
-        assertEquals(tweets.getTweets(), correctList);
+        assertEquals(correctList, tweets.getTweets());
     }
     
     public void testDeleteTweet() {
@@ -90,26 +90,26 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
     public void testCountTweets() {
         TweetList tweets = new TweetList();
         
-        assertEquals(tweets.countTweets(), 0);
+        assertEquals(0, tweets.countTweets());
         
         Tweet tweet1 = new NormalTweet("add 1");
         tweets.add(tweet1);
-        assertEquals(tweets.countTweets(), 1);
+        assertEquals(1, tweets.countTweets());
         
         Tweet tweet2 = new NormalTweet("add 2");
         tweets.add(tweet2);
-        assertEquals(tweets.countTweets(), 2);
+        assertEquals(2, tweets.countTweets());
         
         tweets.delete(tweet2);
-        assertEquals(tweets.countTweets(), 1);
+        assertEquals(1, tweets.countTweets());
         
         tweets.add(tweet2);
-        assertEquals(tweets.countTweets(), 2);
+        assertEquals(2, tweets.countTweets());
         
         tweets.delete(tweet1);
-        assertEquals(tweets.countTweets(), 1);
+        assertEquals(1, tweets.countTweets());
         
         tweets.delete(tweet2);
-        assertEquals(tweets.countTweets(), 0);
+        assertEquals(0, tweets.countTweets());
     }
 }
